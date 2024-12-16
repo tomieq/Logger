@@ -5,19 +5,19 @@ public class Logger {
         self.tag = String(describing: tag)
     }
 
-    func i(_ msg: CustomStringConvertible) {
+    public func i(_ msg: CustomStringConvertible) {
         LoggerDispatcher.dispatch(.info, self.tag, msg)
     }
     
-    func e(_ msg: CustomStringConvertible) {
+    public func e(_ msg: CustomStringConvertible) {
         LoggerDispatcher.dispatch(.error, self.tag, msg)
     }
     
-    func d(_ msg: CustomStringConvertible) {
+    public func d(_ msg: CustomStringConvertible) {
         LoggerDispatcher.dispatch(.debug, self.tag, msg)
     }
     
-    func w(_ msg: CustomStringConvertible) {
+    public func w(_ msg: CustomStringConvertible) {
         LoggerDispatcher.dispatch(.warning, self.tag, msg)
     }
 }
