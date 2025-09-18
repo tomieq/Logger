@@ -7,4 +7,5 @@
 
 public protocol LogStore {
     func log(_ level: LogLevel, _ tag: String, _ message: String)
+    func log(_ level: LogLevel, _ tag: String, _ message: String, fields: LogFields)
 }
