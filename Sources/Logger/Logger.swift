@@ -29,9 +29,7 @@ public class Logger {
     }
     
     public func withField(_ key: String, _ value: CustomStringConvertible) -> Logger {
-        var fields = self.fields
-        fields[key] = value
-        return Logger(self.tag, fields: fields)
+        Logger(self.tag, fields: self.fields.withField(key, value))
     }
 }
 
