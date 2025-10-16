@@ -24,3 +24,9 @@ struct MyLogger: LogStore {
 
 LoggerDispatcher.stores.append(MyLogger())
 ```
+
+### Logging threshold
+If you want to doscard all `debug` messages, set threshold to `info`:
+```swift
+LoggerDispatcher.logLevel = .info
+```

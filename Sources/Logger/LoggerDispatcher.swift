@@ -7,11 +7,13 @@
 
 public struct LoggerDispatcher {
     nonisolated(unsafe) public static var stores: [LogStore] = [LocalLogStore()]
+    nonisolated(unsafe) public static var logLevel = LogLevel.debug
 
     static func dispatch(_ level: LogLevel,
                          _ tag: @autoclosure () -> String,
                          _ message: @autoclosure () -> CustomStringConvertible,
                          fields: LogFields) {
+        guard level >= Self.logLevel else { return }
         let tag = tag().description.replacingOccurrences(of: "\\/", with: "/").trimmingCharacters(in: .whitespaces)
         let message = message().description.trimmingCharacters(in: .whitespaces)
         for store in Self.stores {
