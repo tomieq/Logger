@@ -45,6 +45,25 @@ let package = Package(
                 .product(name: "Logger", package: "Logger")
             ]
         ),
-    ]
+    ],
+    // set mode 5 if run in Docker
+    swiftLanguageModes: [.v5]
 )
+```
+
+### Logging in Docker
+Disable buffering:
+```swift
+#if os(Linux)
+import Glibc
+#else
+import Darwin
+#endif
+
+setvbuf(stdout, nil, _IONBF, 0)
+
+```
+And it works only when compiling in Swift5 mode:
+```swift
+swiftLanguageModes: [.v5]
 ```
