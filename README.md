@@ -30,3 +30,21 @@ If you want to doscard all `debug` messages, set threshold to `info`:
 ```swift
 LoggerDispatcher.logLevel = .info
 ```
+
+### Swift Package Manager
+```swift
+let package = Package(
+    name: "SwiftApp",
+    dependencies: [
+        .package(url: "https://github.com/tomieq/Logger.git", .upToNextMajor(from: "1.1.0"))
+    ],
+    targets: [dependencies.
+        .executableTarget(
+            name: "SwiftApp",
+            dependencies: [
+                .product(name: "Logger", package: "Logger")
+            ]
+        ),
+    ]
+)
+```
